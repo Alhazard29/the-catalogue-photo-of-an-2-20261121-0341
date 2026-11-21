@@ -364,8 +364,9 @@ function drawScene(): void {
     [738, 508, 112, 27, 25],
   ];
   for (const [cx, cy, rx, ry, ang] of [...leftFeathers, ...rightFeathers]) {
-    // Soft grey outline: a slightly larger ellipse drawn first.
-    fillRotatedEllipse(cx, cy, rx + 3, ry + 3, ang, featherEdge[0], featherEdge[1], featherEdge[2], 0.9);
+    // Soft grey outline: a slightly larger ellipse drawn first, now at full
+    // opacity so the pale feathers read better against the studio backdrop.
+    fillRotatedEllipse(cx, cy, rx + 3, ry + 3, ang, featherEdge[0], featherEdge[1], featherEdge[2], 1.0);
     fillRotatedEllipse(cx, cy, rx, ry, ang, featherFill[0], featherFill[1], featherFill[2], 1, featherShade);
   }
   // Fairings where the wings meet the body.
@@ -419,7 +420,6 @@ function drawScene(): void {
   const bx0 = 512 - badgeW / 2;
   const by0 = 606;
   fillRoundedRect(bx0, by0, bx0 + badgeW, by0 + badgeH, 12, 233, 222, 198, 1);
-  fillRoundedRect(bx0, by0, bx0 + badgeW, by0 + badgeH, 12, 160, 140, 108, 0.0);
   drawText(label, bx0 + 10, by0 + 10, scale, 90, 74, 51, 1);
 }
 
